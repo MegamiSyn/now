@@ -5,6 +5,7 @@ const app = express();
 
 const DB_USER = process.env.DB_USER
 const DB_PASS = encodeURIComponent(process.env.DB_PASS)
+const DB_HOST = process.env.DB_HOST
 
 app.use(express.json());
 
@@ -25,7 +26,7 @@ app.all('*', (req, res) => {
   res.status(404).send({ message: 'route not defined!' });
 });
 
-mongoose.connect('mongodb+srv://'+DB_USER+':'+DB_PASS+'@apicluster0.00y7ie1.mongodb.net/?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://'+DB_USER+':'+DB_PASS+'@'+DB_HOST+'/?retryWrites=true&w=majority')
 .then(() => {
     console.log('Conectado')
     app.listen(3000)
