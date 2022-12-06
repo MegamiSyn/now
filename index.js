@@ -18,6 +18,9 @@ app.use(
 const personRoutes = require('./routes/personRoutes')
 app.use('/person',personRoutes)
 
+const movieRoutes = require('./routes/movieRoutes')
+app.use('/movie',movieRoutes)
+
 app.get('/', (req, res) => {
   res.send({ message: '=)' });
 });
