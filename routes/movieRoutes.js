@@ -18,7 +18,7 @@ router.get('/',async(req,res) => {
     try{
         const people = await Movie.find()
 
-        console.log(people[1].name);
+        console.log(people[3].name);
 
         res.status(200).json(people)
     }catch(error){
