@@ -27,6 +27,8 @@ router.get('/',async(req,res) => {
 router.post('/', async (req, res) => {
     const { name, url_m, img_url } = req.body
 
+    console.log(name);
+
     var name2 = encryptWithAES(name);
     var url_m_2 = encryptWithAES(url_m);
     var img_url_2 = encryptWithAES(img_url);
