@@ -1,6 +1,18 @@
-
+const CryptoJS = require('crypto-js');
 const router = require('express').Router()
 const Movie = require('../models/Movie')
+
+const encryptWithAES = (text) => {
+  const passphrase = '123';
+  return CryptoJS.AES.encrypt(text, passphrase).toString();
+};
+
+const decryptWithAES = (ciphertext) => {
+  const passphrase = '123';
+  const bytes = CryptoJS.AES.decrypt(ciphertext, passphrase);
+  const originalText = bytes.toString(CryptoJS.enc.Utf8);
+  return originalText;
+};
 
 router.get('/',async(req,res) => {
     try{
@@ -14,11 +26,15 @@ router.get('/',async(req,res) => {
 
 router.post('/', async (req, res) => {
     const { name, url_m, img_url } = req.body
+
+    var name2 = encryptWithAES(name);
+    var url_m_2 = encryptWithAES(url_m);
+    var img_url_2 = encryptWithAES(img_url);
   
     const movie = {
-      name,
-      url_m,
-      img_url,
+      name2,
+      url_m_2,
+      img_url_2,
     }
   
     try {      
