@@ -3,7 +3,7 @@ const router = require('express').Router()
 const Movie = require('../models/Movie')
 
 const encryptWithAES = (text) => {
-  const passphrase = '123';
+  const passphrase = '123';  
   return CryptoJS.AES.encrypt(text, passphrase).toString();
 };
 
