@@ -17,11 +17,6 @@ const decryptWithAES = (ciphertext) => {
 router.get('/',async(req,res) => {
     try{
         const people = await Movie.find()
-
-        console.log(decryptWithAES(people[3].name));
-        console.log(decryptWithAES(people[3].url_m));
-        console.log(decryptWithAES(people[3].img_url));
-
         res.status(200).json(people)
     }catch(error){
         res.status(500).json({error: error})
